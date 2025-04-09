@@ -102,12 +102,16 @@ class Character:
 # Warrior class (inherits from Character)
 class Warrior(Character):
     def __init__(self, name):
-        super().__init__(name, health=140, attack_power=25, special_ability="Shield Bash", potion=(self.max_health*0.2))
+        super().__init__(name, health=140, attack_power=25) 
+        self.special_ability="Shield Bash"
+        self.potion=(self.max_health*0.2)
 
 # Mage class (inherits from Character)
 class Mage(Character):
     def __init__(self, name):
-        super().__init__(name, health=100, attack_power=35, special_ability="Fireball", potion=(self.max_health*0.2))
+        super().__init__(name, health=100, attack_power=35)
+        self.special_ability="Fireball"
+        self.potion=(self.max_health*0.2)
 
 # EvilWizard class (inherits from Character)
 class EvilWizard(Character):
@@ -121,17 +125,23 @@ class EvilWizard(Character):
 # Create Archer class
 class Archer(Character):
     def __init__(self, name):
-        super().__init__(name, health=120, attack_power=30, special_ability="Power Shot", potion=(self.max_health*0.2))
+        super().__init__(name, health=120, attack_power=30)
+        self.special_ability="Power Shot"
+        self.potion=(self.max_health*0.2)
 
 # Create Paladin class 
 class Paladin(Character):
     def __init__(self, name):
-        super().__init__(name, health=130, attack_power=20, special_ability="Holy Shield", holy_light=(self.max_health*0.25))
+        super().__init__(name, health=130, attack_power=20)
+        self.special_ability="Holy Shield"
+        self.holy_light=(self.max_health*0.25)
 
 # Create Necromancer class
 class Necromancer(Character):
     def __init__(self, name):
-        super().__init__(name, health=110, attack_power=25, special_ability="Summon Undead", special_ability="soul_siphon")
+        super().__init__(name, health=110, attack_power=25)
+        self.special_ability="Summon Undead"
+        self.necronic_heal="soul_siphon"
 
 def create_character():
     print("Choose your character class:")
