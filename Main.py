@@ -95,7 +95,6 @@ class Character:
             print(f"\n{self.name} siphons the soul of {opponent.name} for {damage} damage and heals for {heal_amount} health! Current health: {self.health}")
         else:
             print(f"\n{self.name} is already at full health!")
-        print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
             print(f"\n{opponent.name} has been defeated!")
 
@@ -149,11 +148,16 @@ def create_character():
     print("2. Mage")
     print("3. Archer") 
     print("4. Paladin") 
-    print("5. Necromancer")  # Implement Necromancer class
+    print("5. Necromancer")  
     print("6. Rogue")  # Implement Rogue class
     print("7. Exit")
 
     class_choice = input("Enter the number of your class choice: ")
+    
+    if class_choice not in ['1', '2', '3', '4', '5', '6', '7']:
+        print("\nInvalid choice. Defaulting to Warrior.")
+        class_choice = '1'
+    
     name = input("Enter your character's name: ")
 
     if class_choice == '1':
@@ -161,21 +165,17 @@ def create_character():
     elif class_choice == '2':
         return Mage(name)
     elif class_choice == '3':
-        return Archer(name)  # Implement Archer class
+        return Archer(name)  # Implemented Archer class
     elif class_choice == '4':
-        return Paladin(name)  # Implement Paladin class
-    elif class_choice == '5': # Implement Necromancer class
-        print("Necromancer class is not implemented yet.")
+        return Paladin(name)  # Implemented Paladin class
+    elif class_choice == '5': # Implemented Necromancer class
         return Necromancer(name)
     elif class_choice == '6': # Implement Rogue class
         print("Rogue class is not implemented yet.")
-        return Rogue(name)
+        return Rogue(name) # Placeholder for Rogue class
     elif class_choice == '7':
         print("Exiting the game.")
         exit()
-    else:
-        print("Invalid choice. Defaulting to Warrior.")
-        return Warrior(name)
 
 def battle(player, wizard):
     while wizard.health > 0 and player.health > 0:
@@ -200,7 +200,7 @@ def battle(player, wizard):
             elif isinstance(player, Paladin):
                 player.holy_shield(wizard)
             elif isinstance(player, Necromancer):
-                player.soul_siphon(wizard)
+                player.summon_undead(wizard)
             else:
                 print("\nInvalid choice. Try again.")
         elif choice == '3': # Heal
