@@ -14,24 +14,64 @@ class Character:
 
     def display_stats(self):
         print(f"{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}, Special Ability: {self.special_ability}")
-        
-    def heal(self):
+    
+    # Healing method potion  
+    def potion(self):
         if self.health < self.max_health:
-            heal_amount = min(self.max_health - self.health, self.Heal)
+            heal_amount = min(self.max_health - self.health, self.potion)
             self.health += heal_amount
-            print(f"{self.name} heals for {heal_amount} health! Current health: {self.health}")
+            print(f"{self.name} uses a potion and heals for {heal_amount} health! Current health: {self.health}")
         else:
             print(f"{self.name} is already at full health!")
+    
+    # Healing method for Paladin class
+    def holy_light(self):
+        if self.health < self.max_health:
+            heal_amount = min(self.max_health - self.health, self.holy_light)
+            self.health += heal_amount
+            print(f"{self.name} casts Holy Light causing a bright brilliant light to wash over {self.name} and heals for {heal_amount} health! Current health: {self.health}")
+        else:
+            print(f"{self.name} is already at full health!")        
+    
+    # Shield Bash method for Warrior class
+    # This method is used to deal double damage to the opponent
+    def shield_bash(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} uses Shield Bash on {opponent.name} for {damage} damage!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!")
+            
+    # Fireball method for Mage class
+    # This method is used to deal double damage to the opponent
+    def fireball(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} uses Fireball on {opponent.name} for {damage} damage!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!")
+    
+    # Rapid Fire method for Archer class
+    # This method is used to deal double damage to the opponent
+    def rapid_fire(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} uses Rapid Fire on {opponent.name} for {damage} damage!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!")
+        
+    # 
+    
 
 # Warrior class (inherits from Character)
 class Warrior(Character):
     def __init__(self, name):
-        super().__init__(name, health=140, attack_power=25, special_ability="Shield Bash", Heal=28)
+        super().__init__(name, health=140, attack_power=25, special_ability="Shield Bash", potion=(self.health*0.2))
 
 # Mage class (inherits from Character)
 class Mage(Character):
     def __init__(self, name):
-        super().__init__(name, health=100, attack_power=35)
+        super().__init__(name, health=100, attack_power=35, special_ability="Fireball", potion=(self.health*0.2))
 
 # EvilWizard class (inherits from Character)
 class EvilWizard(Character):
@@ -45,12 +85,12 @@ class EvilWizard(Character):
 # Create Archer class
 class Archer(Character):
     def __init__(self, name):
-        super().__init__(name, health=120, attack_power=30)
+        super().__init__(name, health=120, attack_power=30, special_ability="Rapid Fire", potion=(self.health*0.2))
 
 # Create Paladin class 
 class Paladin(Character):
     def __init__(self, name):
-        super().__init__(name, health=130, attack_power=20)
+        super().__init__(name, health=130, attack_power=20, special_ability="Holy Shield", holy_light=(self.health*0.25))
 
 
 def create_character():
