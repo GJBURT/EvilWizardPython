@@ -8,75 +8,75 @@ class Character:
 
     def attack(self, opponent):
         opponent.health -= self.attack_power
-        print(f"{self.name} attacks {opponent.name} for {self.attack_power} damage!")
+        print(f"\n{self.name} attacks {opponent.name} for {self.attack_power} damage!")
         if opponent.health <= 0:
             print(f"{opponent.name} has been defeated!")
 
     def display_stats(self):
-        print(f"{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}, Special Ability: {self.special_ability}")
+        print(f"\n{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}, Special Ability: {self.special_ability}")
     
     # Healing method potion  
     def potion(self):
         if self.health < self.max_health:
             heal_amount = min(self.max_health - self.health, self.potion_amount)
             self.health += heal_amount
-            print(f"{self.name} uses a potion and heals for {heal_amount} health! Current health: {self.health}")
+            print(f"\n{self.name} uses a potion and heals for {heal_amount} health! Current health: {self.health}")
         else:
-            print(f"{self.name} is already at full health!")
+            print(f"\n{self.name} is already at full health!")
     
     # Healing method for Paladin class
     def holy_light(self):
         if self.health < self.max_health:
             heal_amount = min(self.max_health - self.health, self.holy_light)
             self.health += heal_amount
-            print(f"{self.name} casts Holy Light causing a bright brilliant light to wash over {self.name} and heals for {heal_amount} health! Current health: {self.health}")
+            print(f"\n{self.name} casts Holy Light causing a bright brilliant light to wash over {self.name} and heals for {heal_amount} health! Current health: {self.health}")
         else:
-            print(f"{self.name} is already at full health!")        
+            print(f"\n{self.name} is already at full health!")        
     
     # Shield Bash method for Warrior class
     # This method is used to deal double damage to the opponent
     def shield_bash(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} uses Shield Bash on {opponent.name} for {damage} damage!")
+        print(f"\n{self.name} uses Shield Bash on {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
+            print(f"\n{opponent.name} has been defeated!")
             
     # Fireball method for Mage class
     # This method is used to deal double damage to the opponent
     def fireball(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} uses Fireball on {opponent.name} for {damage} damage!")
+        print(f"\n{self.name} uses Fireball on {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
+            print(f"\n{opponent.name} has been defeated!")
     
     # Rapid Fire method for Archer class
     # This method is used to deal double damage to the opponent
     def power_shot(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} uses Power Shot on {opponent.name} for {damage} damage!")
+        print(f"\n{self.name} uses Power Shot on {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
+            print(f"\n{opponent.name} has been defeated!")
         
     # Holy Shield method for Paladin class
     # This method is used to deal double damage to the opponent
     def holy_shield(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} blesses his shield with holy energy and throws his Holy Shield at {opponent.name} for {damage} damage! {self.name}'s shield returns to them!")
+        print(f"\n{self.name} blesses his shield with holy energy and throws his Holy Shield at {opponent.name} for {damage} damage! {self.name}'s shield returns to them!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!") 
+            print(f"\n{opponent.name} has been defeated!") 
     
     # Summon Undead method for Necromancer class
     # This method is used to deal double damage to the opponent
     def summon_undead(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} summons an undead minion to attack {opponent.name} for {damage} damage!")
+        print(f"\n{self.name} summons an undead minion to attack {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
+            print(f"\n{opponent.name} has been defeated!")
     
     # Soul Siphon method for Necromancer class
     # This method is used to 10% of Necromancer's max health as damage to the opponent and returns the same amount of health to the Necromancer
@@ -92,12 +92,12 @@ class Character:
         if self.health < self.max_health:
             heal_amount = min(damage, self.max_health - self.health)
             self.health += damage
-            print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage and heals for {heal_amount} health! Current health: {self.health}")
+            print(f"\n{self.name} siphons the soul of {opponent.name} for {damage} damage and heals for {heal_amount} health! Current health: {self.health}")
         else:
-            print(f"{self.name} is already at full health!")
+            print(f"\n{self.name} is already at full health!")
         print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
-            print(f"{opponent.name} has been defeated!")
+            print(f"\n{opponent.name} has been defeated!")
 
 # Warrior class (inherits from Character)
 class Warrior(Character):
@@ -120,7 +120,7 @@ class EvilWizard(Character):
 
     def regenerate(self):
         self.health += 5
-        print(f"{self.name} regenerates 5 health! Current health: {self.health}")
+        print(f"\n{self.name} regenerates 5 health! Current health: {self.health}")
 
 # Create Archer class
 class Archer(Character):
@@ -202,7 +202,7 @@ def battle(player, wizard):
             elif isinstance(player, Necromancer):
                 player.soul_siphon(wizard)
             else:
-                print("Invalid choice. Try again.")
+                print("\nInvalid choice. Try again.")
         elif choice == '3': # Heal
             # Use potion for all classes except Paladin and Necromancer
             if isinstance(player, (Warrior, Archer, Mage)):
@@ -212,25 +212,25 @@ def battle(player, wizard):
             elif isinstance(player, Necromancer):
                 player.soul_siphon(wizard)
             else:
-                print("Invalid choice. Try again.")
+                print("\nInvalid choice. Try again.")
         elif choice == '4':
             player.display_stats()
         elif choice == '5':
-            print("Exiting the game.")
+            print("\nExiting the game.")
             exit()
         else:
-            print("Invalid choice. Try again.")
+            print("\nInvalid choice. Try again.")
 
         if wizard.health > 0:
             wizard.regenerate()
             wizard.attack(player)
 
         if player.health <= 0:
-            print(f"{player.name} has been defeated!")
+            print(f"\n{player.name} has been defeated!")
             break
 
     if wizard.health <= 0:
-        print(f"The wizard {wizard.name} has been defeated by {player.name}!")
+        print(f"\nThe wizard {wizard.name} has been defeated by {player.name}!")
 def main():
     player = create_character()
     wizard = EvilWizard("The Dark Wizard")
