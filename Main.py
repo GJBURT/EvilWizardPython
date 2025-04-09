@@ -105,7 +105,11 @@ def create_character():
     print("1. Warrior")
     print("2. Mage")
     print("3. Archer") 
-    print("4. Paladin")  
+    print("4. Paladin") 
+    print("5. Necromancer")  # Implement Necromancer class
+    print("6. Warlock")  # Implement Warlock class
+    print("7. Rogue")  # Implement Rogue class
+    print("8. Exit")
 
     class_choice = input("Enter the number of your class choice: ")
     name = input("Enter your character's name: ")
@@ -118,6 +122,18 @@ def create_character():
         return Archer(name)  # Implement Archer class
     elif class_choice == '4':
         return Paladin(name)  # Implement Paladin class
+    elif class_choice == '5': # Implement Necromancer class
+        print("Necromancer class is not implemented yet.")
+        return Necromancer(name)
+    elif class_choice == '6': # Implement Warlock class
+        print("Warlock class is not implemented yet.")
+        return Warlock(name)
+    elif class_choice == '7': # Implement Rogue class
+        print("Rogue class is not implemented yet.")
+        return Rogue(name)
+    elif class_choice == '8':
+        print("Exiting the game.")
+        exit()
     else:
         print("Invalid choice. Defaulting to Warrior.")
         return Warrior(name)
