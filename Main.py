@@ -69,16 +69,33 @@ class Character:
         if opponent.health <= 0:
             print(f"{opponent.name} has been defeated!") 
     
+    # Summon Undead method for Necromancer class
+    # This method is used to deal double damage to the opponent
+    def summon_undead(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} summons an undead minion to attack {opponent.name} for {damage} damage!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!")
+    
+    # Soul Siphon method for Necromancer class
+    # This method is used to deal double damage to the opponent
+    def soul_siphon(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!")
 
 # Warrior class (inherits from Character)
 class Warrior(Character):
     def __init__(self, name):
-        super().__init__(name, health=140, attack_power=25, special_ability="Shield Bash", potion=(self.health*0.2))
+        super().__init__(name, health=140, attack_power=25, special_ability="Shield Bash", potion=(self.max_health*0.2))
 
 # Mage class (inherits from Character)
 class Mage(Character):
     def __init__(self, name):
-        super().__init__(name, health=100, attack_power=35, special_ability="Fireball", potion=(self.health*0.2))
+        super().__init__(name, health=100, attack_power=35, special_ability="Fireball", potion=(self.max_health*0.2))
 
 # EvilWizard class (inherits from Character)
 class EvilWizard(Character):
@@ -92,13 +109,17 @@ class EvilWizard(Character):
 # Create Archer class
 class Archer(Character):
     def __init__(self, name):
-        super().__init__(name, health=120, attack_power=30, special_ability="Power Shot", potion=(self.health*0.2))
+        super().__init__(name, health=120, attack_power=30, special_ability="Power Shot", potion=(self.max_health*0.2))
 
 # Create Paladin class 
 class Paladin(Character):
     def __init__(self, name):
-        super().__init__(name, health=130, attack_power=20, special_ability="Holy Shield", holy_light=(self.health*0.25))
+        super().__init__(name, health=130, attack_power=20, special_ability="Holy Shield", holy_light=(self.max_health*0.25))
 
+# Create Necromancer class
+class Necromancer(Character):
+    def __init__(self, name):
+        super().__init__(name, health=110, attack_power=25, special_ability="Summon Undead", soul_siphon=(self.max_health*0.2))
 
 def create_character():
     print("Choose your character class:")
