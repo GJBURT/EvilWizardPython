@@ -190,9 +190,27 @@ def battle(player, wizard):
         if choice == '1':
             player.attack(wizard)
         elif choice == '2':
-            pass  # Implement special abilities
+            if isinstance(player, Warrior):
+                player.shield_bash(wizard)
+            elif isinstance(player, Mage):
+                player.fireball(wizard)
+            elif isinstance(player, Archer):
+                player.power_shot(wizard)
+            elif isinstance(player, Paladin):
+                player.holy_shield(wizard)
+            elif isinstance(player, Necromancer):
+                player.soul_siphon(wizard)
+            else:
+                print("Invalid choice. Try again.")
         elif choice == '3':
-            pass  # Implement heal method
+            if isinstance(player, Warrior, Archer, Mage):
+                player.potion()
+            elif isinstance(player, Paladin):
+                player.holy_light()
+            elif isinstance(player, Necromancer):
+                player.soul_siphon(wizard)
+            else:
+                print("Invalid choice. Try again.")
         elif choice == '4':
             player.display_stats()
         else:
