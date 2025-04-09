@@ -184,6 +184,7 @@ def battle(player, wizard):
         print("2. Use Special Ability")
         print("3. Heal")
         print("4. View Stats")
+        print("5. Exit")
 
         choice = input("Choose an action: ")
 
@@ -213,6 +214,9 @@ def battle(player, wizard):
                 print("Invalid choice. Try again.")
         elif choice == '4':
             player.display_stats()
+        elif choice == '5':
+            print("Exiting the game.")
+            exit()
         else:
             print("Invalid choice. Try again.")
 
