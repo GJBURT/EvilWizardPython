@@ -53,14 +53,21 @@ class Character:
     
     # Rapid Fire method for Archer class
     # This method is used to deal double damage to the opponent
-    def rapid_fire(self, opponent):
+    def power_shot(self, opponent):
         damage = self.attack_power * 2
         opponent.health -= damage
-        print(f"{self.name} uses Rapid Fire on {opponent.name} for {damage} damage!")
+        print(f"{self.name} uses Power Shot on {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
             print(f"{opponent.name} has been defeated!")
         
-    # 
+    # Holy Shield method for Paladin class
+    # This method is used to deal double damage to the opponent
+    def holy_shield(self, opponent):
+        damage = self.attack_power * 2
+        opponent.health -= damage
+        print(f"{self.name} blesses his shield with holy energy and throws his Holy Shield at {opponent.name} for {damage} damage! {self.name}'s shield returns to them!")
+        if opponent.health <= 0:
+            print(f"{opponent.name} has been defeated!") 
     
 
 # Warrior class (inherits from Character)
@@ -85,7 +92,7 @@ class EvilWizard(Character):
 # Create Archer class
 class Archer(Character):
     def __init__(self, name):
-        super().__init__(name, health=120, attack_power=30, special_ability="Rapid Fire", potion=(self.health*0.2))
+        super().__init__(name, health=120, attack_power=30, special_ability="Power Shot", potion=(self.health*0.2))
 
 # Create Paladin class 
 class Paladin(Character):
