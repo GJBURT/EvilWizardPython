@@ -27,7 +27,7 @@ class Character:
     # Healing method for Paladin class
     def holy_light(self):
         if self.health < self.max_health:
-            heal_amount = min(self.max_health - self.health, self.holy_light)
+            heal_amount = min(self.max_health - self.health, self.holy_light_amount)
             self.health += heal_amount
             print(f"\n{self.name} casts Holy Light causing a bright brilliant light to wash over {self.name} and heals for {heal_amount} health! Current health: {self.health}")
         else:
@@ -134,7 +134,7 @@ class Paladin(Character):
     def __init__(self, name):
         super().__init__(name, health=130, attack_power=20)
         self.special_ability="Holy Shield"
-        self.holy_light=(self.max_health*0.25)
+        self.holy_light_amount=(self.max_health*0.25)
 
 # Create Necromancer class
 class Necromancer(Character):
