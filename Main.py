@@ -18,7 +18,7 @@ class Character:
     # Healing method potion  
     def potion(self):
         if self.health < self.max_health:
-            heal_amount = min(self.max_health - self.health, self.potion)
+            heal_amount = min(self.max_health - self.health, self.potion_amount)
             self.health += heal_amount
             print(f"{self.name} uses a potion and heals for {heal_amount} health! Current health: {self.health}")
         else:
@@ -104,14 +104,14 @@ class Warrior(Character):
     def __init__(self, name):
         super().__init__(name, health=140, attack_power=25) 
         self.special_ability="Shield Bash"
-        self.potion=(self.max_health*0.2)
+        self.potion_amount = (self.max_health*0.2)
 
 # Mage class (inherits from Character)
 class Mage(Character):
     def __init__(self, name):
         super().__init__(name, health=100, attack_power=35)
         self.special_ability="Fireball"
-        self.potion=(self.max_health*0.2)
+        self.potion_amount=(self.max_health*0.2)
 
 # EvilWizard class (inherits from Character)
 class EvilWizard(Character):
@@ -127,7 +127,7 @@ class Archer(Character):
     def __init__(self, name):
         super().__init__(name, health=120, attack_power=30)
         self.special_ability="Power Shot"
-        self.potion=(self.max_health*0.2)
+        self.potion_amount=(self.max_health*0.2)
 
 # Create Paladin class 
 class Paladin(Character):
