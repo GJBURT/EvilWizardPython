@@ -79,10 +79,22 @@ class Character:
             print(f"{opponent.name} has been defeated!")
     
     # Soul Siphon method for Necromancer class
-    # This method is used to deal double damage to the opponent
+    # This method is used to 10% of Necromancer's max health as damage to the opponent and returns the same amount of health to the Necromancer
     def soul_siphon(self, opponent):
-        damage = self.attack_power * 2
-        opponent.health -= damage
+        damage = self.max_health * 10 / 100  # 10% of max health
+        if damage > opponent.health: # Ensure we don't deal more damage than the opponent's health
+            damage = opponent.health
+        opponent.health -= damage # Deal damage to opponent
+        
+        # Heal the necromancer for the same amount of damage dealt
+        # This is the amount of health the necromancer will heal for
+        # Ensure the health does not exceed max health
+        if self.health < self.max_health:
+            heal_amount = min(damage, self.max_health - self.health)
+            self.health += damage
+            print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage and heals for {heal_amount} health! Current health: {self.health}")
+        else:
+            print(f"{self.name} is already at full health!")
         print(f"{self.name} siphons the soul of {opponent.name} for {damage} damage!")
         if opponent.health <= 0:
             print(f"{opponent.name} has been defeated!")
@@ -119,7 +131,7 @@ class Paladin(Character):
 # Create Necromancer class
 class Necromancer(Character):
     def __init__(self, name):
-        super().__init__(name, health=110, attack_power=25, special_ability="Summon Undead", soul_siphon=(self.max_health*0.2))
+        super().__init__(name, health=110, attack_power=25, special_ability="Summon Undead", special_ability="soul_siphon")
 
 def create_character():
     print("Choose your character class:")
@@ -128,9 +140,8 @@ def create_character():
     print("3. Archer") 
     print("4. Paladin") 
     print("5. Necromancer")  # Implement Necromancer class
-    print("6. Warlock")  # Implement Warlock class
-    print("7. Rogue")  # Implement Rogue class
-    print("8. Exit")
+    print("6. Rogue")  # Implement Rogue class
+    print("7. Exit")
 
     class_choice = input("Enter the number of your class choice: ")
     name = input("Enter your character's name: ")
@@ -146,13 +157,10 @@ def create_character():
     elif class_choice == '5': # Implement Necromancer class
         print("Necromancer class is not implemented yet.")
         return Necromancer(name)
-    elif class_choice == '6': # Implement Warlock class
-        print("Warlock class is not implemented yet.")
-        return Warlock(name)
-    elif class_choice == '7': # Implement Rogue class
+    elif class_choice == '6': # Implement Rogue class
         print("Rogue class is not implemented yet.")
         return Rogue(name)
-    elif class_choice == '8':
+    elif class_choice == '7':
         print("Exiting the game.")
         exit()
     else:
