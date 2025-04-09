@@ -203,8 +203,9 @@ def battle(player, wizard):
                 player.soul_siphon(wizard)
             else:
                 print("Invalid choice. Try again.")
-        elif choice == '3':
-            if isinstance(player, Warrior, Archer, Mage):
+        elif choice == '3': # Heal
+            # Use potion for all classes except Paladin and Necromancer
+            if isinstance(player, (Warrior, Archer, Mage)):
                 player.potion()
             elif isinstance(player, Paladin):
                 player.holy_light()
