@@ -1,4 +1,4 @@
-from characters import Warrior, Mage, Archer, Paladin, Necromancer
+from characters import Warrior, Mage, Archer, Paladin, Necromancer, Rogue
 from enemies import EvilWizard
 from utility import create_character
 
@@ -26,6 +26,8 @@ def battle(player, wizard):
                 player.holy_shield(wizard)
             elif isinstance(player, Necromancer):
                 player.summon_undead(wizard)
+            elif isinstance(player, Rogue):
+                player.backstab(wizard)
             else:
                 print("\nInvalid choice. Try again.")
         elif choice == '3':  # Heal
@@ -47,7 +49,7 @@ def battle(player, wizard):
             break
 
     if wizard.health <= 0:
-        print(f"\nThe wizard {wizard.name} has been defeated by {player.name}!")
+        print(f"\n {wizard.name} has been defeated by {player.name}!")
 
 def main():
     player = create_character()

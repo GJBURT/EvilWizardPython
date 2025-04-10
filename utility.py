@@ -1,4 +1,4 @@
-from characters import Warrior, Mage, Archer, Paladin, Necromancer
+from characters import Warrior, Mage, Archer, Paladin, Necromancer, Rogue
 
 def create_character():
     print("Choose your character class:")
@@ -29,8 +29,7 @@ def create_character():
     elif class_choice == '5':
         return Necromancer(name)
     elif class_choice == '6':
-        print("Rogue class is not implemented yet.")
-        return None
+        return Rogue(name)
     elif class_choice == '7':
         print("Exiting the game.")
         exit()
