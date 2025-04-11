@@ -38,7 +38,7 @@ def battle(player, wizard):
             elif isinstance(player, Mage):
                 player.mana_shield()
             elif isinstance(player, Archer):
-                player.rapid_fire()
+                player.rapid_fire(wizard)
             elif isinstance(player, Paladin):
                 player.divine_strike()
             elif isinstance(player, Necromancer):
@@ -64,7 +64,11 @@ def battle(player, wizard):
 
         if wizard.health > 0:
             wizard.regenerate()
-            wizard.attack(player)
+            if wizard.skip_turn:
+                print(f"\n{wizard.name} is stunned and misses their turn!")
+                wizard.skip_turn = False  # Reset the skip_turn flag
+            else:
+                wizard.attack(player)
 
             # Reset the enraged state after warrior takes damage
             if isinstance(player, Warrior) and player.is_enraged:

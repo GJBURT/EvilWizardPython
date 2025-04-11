@@ -75,15 +75,15 @@ def backstab(player, opponent):
         print(f"{opponent.name} has been defeated!")
 
 # Archer abilities
-# Archer Rapid Fire causes the archer to attack twice in one turn causing the opponent to miss a turn
-def rapid_fire(player, opponent):   
-    damage = player.attack_power * 2  # Double damage for Rapid Fire
+# Archer Rapid Fire ability
+def rapid_fire(player, opponent):
+    damage = player.attack_power * 1.5  # Deal 1.5x attack power as damage
     opponent.health -= damage
-    print(f"\n{player.name} unleashes a flurry of arrows on {opponent.name} for {damage} damage!")
+    opponent.skip_turn = True  # Set the skip_turn flag for the opponent
+    print(f"\n{player.name} uses Rapid Fire on {opponent.name} for {damage:.2f} damage!")
+    print(f"{opponent.name} is stunned and will miss their next turn!")
     if opponent.health <= 0:
         print(f"{opponent.name} has been defeated!")
-    else:
-        print(f"{opponent.name} is stunned and misses their next turn!")  # Opponent misses a turn
 
 # Archer Power Shot       
 def power_shot(player, opponent):

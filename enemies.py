@@ -5,13 +5,17 @@ class EvilWizard:
         self.name = name
         self.health = 150
         self.attack_power = 15
+        self.skip_turn = False  # New attribute to track if the wizard should skip their turn
 
     def regenerate(self):
         self.health += 5
         print(f"\n{self.name} regenerates 5 health! Current health: {self.health}")
 
-    # Need to update to account for Rage ability where warrior takes half damage, Mana Shield has a 25% shield, Bone Armor has a 25% shield, and Shadow Dance has a chance to dodge
     def attack(self, opponent):
+        if self.skip_turn:
+            print(f"\n{self.name} is stunned and misses their turn!")
+            self.skip_turn = False  # Reset the skip_turn flag
+            return
         if hasattr(opponent, 'rage') and opponent.rage:
             damage = self.attack_power // 2  # Half damage if the warrior is enraged
             opponent.is_enraged = False  # Reset rage status after the attack
