@@ -32,7 +32,6 @@ class Warrior(Character):
     def __init__(self, name):
         super().__init__(name, health=140, attack_power=25)
         self.special_ability = "Shield Bash"
-        self.unique_ability = "Rage"
         self.potion_amount = self.max_health * 0.2
     
     def shield_bash(self, opponent):

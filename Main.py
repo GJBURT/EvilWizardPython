@@ -66,6 +66,10 @@ def battle(player, wizard):
             wizard.regenerate()
             wizard.attack(player)
 
+            # Reset the enraged state after warrior takes damage
+            if isinstance(player, Warrior) and player.is_enraged:
+                player.is_enraged = False
+                print(f"\n{player.name} is no longer enraged.")
         if player.health <= 0:
             print(f"\n{player.name} has been defeated!")
             break

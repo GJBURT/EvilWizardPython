@@ -1,9 +1,8 @@
 # Warrior abilities
-# Warrior Rage increases the warrior's attack power for a short duration and ignoress the next attack against the warrior
+# Warrior Rage increases the warrior's attack power for a short duration and stacks with each use
 def rage(player):
     player.attack_power *= 1.5  # Increase attack power by 50%
-    player.dodge_chance = True  # Ignore the next attack
-    print(f"\n{player.name} enters a rage, increasing attack power to {player.attack_power} and dodging the next attack!")
+    print(f"\n{player.name} uses Rage, increasing attack power to {player.attack_power:.2f}!")
 
 # Warrior Shield Bash
 def shield_bash(player, opponent):
