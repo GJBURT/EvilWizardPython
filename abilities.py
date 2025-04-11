@@ -102,13 +102,10 @@ def divine_strike(player, opponent):
     if opponent.health <= 0:
         print(f"{opponent.name} has been defeated!")
 
-# Paladin Holy Shield that will apply protection to the paladin on the next turn
+# Paladin Holy Shield that provides 25% damage reduction for the next enemy attack
 def holy_shield(player):
-    shield_amount = player.max_health * 0.25  # 25% of max health
-    player.health += shield_amount
-    print(f"\n{player.name} blesses their Holy Shield, gaining {shield_amount} protection! Current health: {player.health}")
-    if player.health > player.max_health:
-        player.health = player.max_health  # Ensure health does not exceed max health    
+    player.is_protected = True  # Set the protection flag
+    print(f"\n{player.name} blesses their Holy Shield, reducing incoming damage by 25% for the next attack!")
 
 # Paladin Holy Light Heal
 def holy_light(player):

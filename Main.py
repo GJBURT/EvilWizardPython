@@ -24,7 +24,7 @@ def battle(player, wizard):
             elif isinstance(player, Archer):
                 player.power_shot(wizard)
             elif isinstance(player, Paladin):
-                player.holy_shield(wizard)
+                player.divine_strike(wizard)
             elif isinstance(player, Necromancer):
                 player.summon_undead(wizard)
             elif isinstance(player, Rogue):
@@ -40,7 +40,7 @@ def battle(player, wizard):
             elif isinstance(player, Archer):
                 player.rapid_fire(wizard)
             elif isinstance(player, Paladin):
-                player.divine_strike()
+                player.holy_shield()
             elif isinstance(player, Necromancer):
                 player.soul_siphon(wizard)
             elif isinstance(player, Rogue):
@@ -68,8 +68,14 @@ def battle(player, wizard):
                 print(f"\n{wizard.name} is stunned and misses their turn!")
                 wizard.skip_turn = False  # Reset the skip_turn flag
             else:
-                wizard.attack(player)
-
+                if isinstance(player, Paladin) and player.is_protected:
+                    damage = int(wizard.attack_power * 0.75)  # Reduce damage by 25%
+                    player.health -= damage
+                    print(f"\n{wizard.name} attacks {player.name} for {damage} damage!")
+                else:
+                    # Normal attack if not protected
+                    wizard.attack(player)
+                
             # Reset the enraged state after warrior takes damage
             if isinstance(player, Warrior) and player.is_enraged:
                 player.is_enraged = False

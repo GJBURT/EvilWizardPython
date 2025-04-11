@@ -72,12 +72,13 @@ class Archer(Character):
 class Paladin(Character):
     def __init__(self, name):
         super().__init__(name, health=130, attack_power=20)
-        self.special_ability = "Holy Shield"
-        self.unique_ability = "Divine Strike"
+        self.special_ability = "Divine Strike"
+        self.unique_ability = "Holy Shield"
         self.holy_light_amount = self.max_health * 0.25
+        self.is_protected = False  # New attribute to track if the paladin is protected
         
-    def holy_shield(self, opponent):
-        holy_shield(self, opponent)
+    def holy_shield(self):
+        holy_shield(self)
 
     def holy_light(self):
         holy_light(self)
