@@ -32,6 +32,7 @@ class Warrior(Character):
     def __init__(self, name):
         super().__init__(name, health=140, attack_power=25)
         self.special_ability = "Shield Bash"
+        self.unique_ability = "Rage"
         self.potion_amount = self.max_health * 0.2
     
     def shield_bash(self, opponent):
@@ -92,8 +93,8 @@ class Necromancer(Character):
     def __init__(self, name):
         super().__init__(name, health=110, attack_power=25)
         self.special_ability = "Summon Undead"
-        self.necronic_heal = "soul_siphon"
-        self.unique_abilitiy = "bone_armor"
+        self.heal = "Soul Siphon"
+        self.unique_ability = "Bone Armor"
         self.is_protected = False  # New attribute to track if the paladin is protected
         
     def summon_undead(self, opponent):
@@ -108,13 +109,14 @@ class Necromancer(Character):
 # Rogue class
 class Rogue(Character):
     def __init__(self, name):
-        super().__init__(name, health=115, attack_power=28)
-        self.special_ability = "Backstab"
+        super().__init__(name, health=110, attack_power=30)
+        self.special_ability = "Back Stab"
         self.unique_ability = "Shadow Dance"
+        self.dodge_chance = 0.0  # Initialize dodge chance to 0.0
         self.potion_amount = self.max_health * 0.2
-    
+
+    def shadow_dance(self):
+        shadow_dance(self)  # Call the shadow_dance function from abilities.py
+
     def backstab(self, opponent):
-        backstab(self, opponent)
-        
-    def shadow_dance(self, opponent):
-        shadow_dance(self, opponent)
+        backstab(self, opponent)  # Call the backstab function from abilities.py

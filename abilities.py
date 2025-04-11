@@ -52,16 +52,11 @@ def soul_siphon(self, target):
         print(f"{self.name} used Soul Siphon on {target.name}, draining {drained_health} health! {self.name}'s health is now {self.health}.")
 
 # Rogue abilities
-# Rogue Shadow Dance creates a shadow images of the rogue granting the rogue a chance to dodge the next attack
-# and the rogue can attack twice in one turn
-def shadow_dance(player, opponent):
+# Rogue Shadow Dance creates shadow images of the rogue, granting a chance to dodge the next attack
+def shadow_dance(player):
     dodge_chance = 0.5  # 50% chance to dodge the next attack
-    player.dodge_chance = dodge_chance
+    player.dodge_chance = dodge_chance  # Set the dodge_chance attribute
     print(f"\n{player.name} enters Shadow Dance, gaining a {dodge_chance * 100}% chance to dodge the next attack!")
-    if player.dodge_chance:
-        print(f"{player.name} dodged the attack!")
-    else:
-        print(f"{player.name} failed to dodge the attack!")
 
 # Rogue Backstab        
 def backstab(player, opponent):

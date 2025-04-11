@@ -22,12 +22,7 @@ class EvilWizard:
         elif hasattr(opponent, 'mana_shield') and opponent.mana_shield:
             damage = self.attack_power * 0.75  # 25% damage reduction if the mage has a mana shield
         elif hasattr(opponent, 'bone_armor') and opponent.bone_armor:
-            damage = self.attack_power * 0.75
-        elif hasattr(opponent, 'shadow_dance') and opponent.shadow_dance:
-            dodge_chance = opponent.shadow_dance
-            if random.random() < dodge_chance:
-                print(f"{opponent.name} dodges the attack!")
-                return  # No damage if dodged   
+            damage = self.attack_power * 0.75 
         else:
             damage = self.attack_power
 
