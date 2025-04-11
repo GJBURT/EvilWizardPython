@@ -32,11 +32,8 @@ def fireball(player, opponent):
 # Necromancer abilities
 # Necromancer Bone Armor granting the necromancer a shield that absorbs damage
 def bone_armor(player):
-    shield_amount = player.max_health * 0.25  # 25% of max health
-    player.health += shield_amount
-    print(f"\n{player.name} summons Bone Armor, gaining {shield_amount} protection! Current health: {player.health}")
-    if player.health > player.max_health:
-        player.health = player.max_health  # Ensure health does not exceed max health
+    player.is_protected = True  # Set the protection flag
+    print(f"\n{player.name} wraps their body in Bone Armor, reducing incoming damage by 25%!")
 
 # Necromancer Summon Undead
 def summon_undead(player, opponent):
@@ -105,7 +102,7 @@ def divine_strike(player, opponent):
 # Paladin Holy Shield that provides 25% damage reduction for the next enemy attack
 def holy_shield(player):
     player.is_protected = True  # Set the protection flag
-    print(f"\n{player.name} blesses their Holy Shield, reducing incoming damage by 25% for the next attack!")
+    print(f"\n{player.name} blesses their Holy Shield, reducing incoming damage by 25%!")
 
 # Paladin Holy Light Heal
 def holy_light(player):

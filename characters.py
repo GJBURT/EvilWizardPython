@@ -94,6 +94,7 @@ class Necromancer(Character):
         self.special_ability = "Summon Undead"
         self.necronic_heal = "soul_siphon"
         self.unique_abilitiy = "bone_armor"
+        self.is_protected = False  # New attribute to track if the paladin is protected
         
     def summon_undead(self, opponent):
         summon_undead(self, opponent)

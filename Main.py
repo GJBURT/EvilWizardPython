@@ -68,7 +68,7 @@ def battle(player, wizard):
                 print(f"\n{wizard.name} is stunned and misses their turn!")
                 wizard.skip_turn = False  # Reset the skip_turn flag
             else:
-                if isinstance(player, Paladin) and player.is_protected:
+                if isinstance(player, (Paladin, Necromancer)) and player.is_protected:
                     damage = int(wizard.attack_power * 0.75)  # Reduce damage by 25%
                     player.health -= damage
                     print(f"\n{wizard.name} attacks {player.name} for {damage} damage!")
