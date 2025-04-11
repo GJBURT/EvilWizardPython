@@ -7,9 +7,10 @@ def battle(player, wizard):
         print("\n--- Your Turn ---")
         print("1. Attack")
         print("2. Use Special Ability")
-        print("3. Heal")
-        print("4. View Stats")
-        print("5. Exit")
+        print("3. Use Unique Ability")
+        print("4. Heal")
+        print("5. View Stats")
+        print("6. Exit")
 
         choice = input("Choose an action: ")
 
@@ -30,11 +31,32 @@ def battle(player, wizard):
                 player.backstab(wizard)
             else:
                 print("\nInvalid choice. Try again.")
-        elif choice == '3':  # Heal
-            player.potion()
-        elif choice == '4':
-            player.display_stats()
+        # This will have Choice 3 for the Second Special Ability for each class, their unique ability
+        elif choice == '3': # Unique Ability
+            if isinstance(player, Warrior):
+                player.rage()
+            elif isinstance(player, Mage):
+                player.mana_shield()
+            elif isinstance(player, Archer):
+                player.rapid_fire()
+            elif isinstance(player, Paladin):
+                player.divine_strike()
+            elif isinstance(player, Necromancer):
+                player.soul_siphon(wizard)
+            elif isinstance(player, Rogue):
+                player.shadow_dance()
+            else:
+                print("\nInvalid choice. Try again.")
+        elif choice == '4':  # Heal
+            if isinstance(player, (Warrior, Mage, Archer, Rogue)):
+                player.potion()
+            elif isinstance(player, Paladin):
+                player.holy_light()
+            elif isinstance(player, Necromancer):
+                player.soul_siphon(wizard)
         elif choice == '5':
+            player.display_stats()
+        elif choice == '6':
             print("\nExiting the game.")
             exit()
         else:

@@ -7,7 +7,7 @@ def create_character():
     print("3. Archer")
     print("4. Paladin")
     print("5. Necromancer")
-    print("6. Rogue")  # Placeholder for Rogue class
+    print("6. Rogue")  
     print("7. Exit")
 
     class_choice = input("Enter the number of your class choice: ")
