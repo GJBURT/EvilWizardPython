@@ -47,7 +47,7 @@ def battle(player, wizard):
             elif isinstance(player, Paladin):
                 player.holy_shield()
             elif isinstance(player, Necromancer):
-                player.soul_siphon(wizard)
+                player.bone_armor()
             elif isinstance(player, Rogue):
                 player.shadow_dance()  # Call the Rogue's shadow_dance method
             else:
