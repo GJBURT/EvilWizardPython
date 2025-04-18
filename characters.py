@@ -16,7 +16,7 @@ class Character:
 
     # Displaying Character Stats
     def display_stats(self):
-        print(f"\n{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}, Special Ability: {self.special_ability}")
+        print(f"\n{self.name}'s Stats - Health: {self.health}/{self.max_health}, Attack Power: {self.attack_power}, Special Ability: {self.special_ability}, Unique Ability: {self.unique_ability}")
 
     # Healing with a Potion
     def potion(self):
